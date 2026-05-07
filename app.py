@@ -35,6 +35,12 @@ PALETTE = {
     "dark": "#21304F",
     "muted": "#5B6B84",
     "lavender": "#D8C6F3",
+
+    # Extra chart colors used by soft_bar_chart()
+    "teal": "#8BC7C8",
+    "rose": "#F7A7A6",
+    "sage": "#BFD8B8",
+    "soft_blue": "#BFD7F1",
 }
 
 st.markdown(
