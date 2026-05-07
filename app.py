@@ -27,17 +27,14 @@ st.set_page_config(
 
 PALETTE = {
     "cream": "#FFF8F0",
-    "soft_peach": "#FFE6D5",
-    "peach": "#FFB997",
-    "rose": "#F7A7A6",
-    "mint": "#CDEDEA",
-    "teal": "#78C6C7",
-    "soft_blue": "#BBD7F0",
+    "soft_peach": "#FFF1E8",
+    "peach": "#FFB7A8",
+    "coral": "#FF765F",
+    "mint": "#EAF7F6",
+    "soft_mint": "#F3FBFA",
+    "dark": "#21304F",
+    "muted": "#5B6B84",
     "lavender": "#D8C6F3",
-    "sage": "#B8D8BA",
-    "dark": "#334155",
-    "muted": "#64748B",
-    "white": "#FFFFFF",
 }
 
 st.markdown(
@@ -76,11 +73,11 @@ st.markdown(
     }}
 
     .main-title {{
-        padding: 1.2rem 1.4rem;
-        border-radius: 24px;
-        background: linear-gradient(135deg, #FFFFFF 0%, {PALETTE['mint']} 100%);
-        box-shadow: 0 10px 30px rgba(51, 65, 85, 0.08);
-        margin-bottom: 1.2rem;
+    padding: 1.2rem 1.4rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF1E8 55%, #EAF7F6 100%);
+    box-shadow: 0 10px 30px rgba(51, 65, 85, 0.08);
+    margin-bottom: 1.2rem;
     }}
 
     .main-title h1 {{
@@ -164,9 +161,9 @@ st.markdown(
         color: {PALETTE['dark']} !important;
     }}
 
-    .stTabs [data-baseweb="tab-list"] {{
-        gap: .45rem;
-        background: transparent !important;
+    .stTabs [aria-selected="true"] {{
+    background: #FFF1E8 !important;
+    border-bottom: 3px solid #FF765F !important;
     }}
 
     .stTabs [data-baseweb="tab"] {{
@@ -243,7 +240,18 @@ st.markdown(
     button {{
         color: {PALETTE['dark']} !important;
     }}
+    .stButton > button {{
+        background: linear-gradient(135deg, #FFB7A8 0%, #FFD8CF 100%) !important;
+        color: #21304F !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+    }}
 
+    .stButton > button:hover {{
+        background: linear-gradient(135deg, #FFA493 0%, #FFCABE 100%) !important;
+        color: #21304F !important;
+    }}
     /* Altair line charts only. Bar charts use custom responsive HTML below. */
     div[data-testid="stVegaLiteChart"] {{
         background: #FFFFFF !important;
