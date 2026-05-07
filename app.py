@@ -43,14 +43,38 @@ PALETTE = {
 st.markdown(
     f"""
     <style>
+    html, body, [class*="css"] {{
+        color: {PALETTE['dark']} !important;
+    }}
+
     .stApp {{
-        background: linear-gradient(135deg, {PALETTE['cream']} 0%, #FFF3EA 48%, #F3FBFA 100%);
-        color: {PALETTE['dark']};
+        background: linear-gradient(135deg, {PALETTE['cream']} 0%, #FFF3EA 48%, #F3FBFA 100%) !important;
+        color: {PALETTE['dark']} !important;
     }}
-    section[data-testid="stSidebar"] {{
-        background: linear-gradient(180deg, #FFFFFF 0%, {PALETTE['soft_peach']} 100%);
-        border-right: 1px solid rgba(51, 65, 85, 0.08);
+
+    .main .block-container {{
+        padding-top: 3.5rem;
+        padding-bottom: 3rem;
+        max-width: 1450px;
     }}
+
+    header[data-testid="stHeader"] {{
+        background: rgba(255, 248, 240, 0.96) !important;
+        border-bottom: 1px solid rgba(51, 65, 85, 0.08) !important;
+    }}
+
+    [data-testid="stToolbar"],
+    [data-testid="stToolbar"] *,
+    [data-testid="stStatusWidget"],
+    [data-testid="stStatusWidget"] * {{
+        color: {PALETTE['dark']} !important;
+        fill: {PALETTE['dark']} !important;
+    }}
+
+    [data-testid="stDecoration"] {{
+        background: linear-gradient(90deg, {PALETTE['mint']}, {PALETTE['peach']}) !important;
+    }}
+
     .main-title {{
         padding: 1.2rem 1.4rem;
         border-radius: 24px;
@@ -58,105 +82,141 @@ st.markdown(
         box-shadow: 0 10px 30px rgba(51, 65, 85, 0.08);
         margin-bottom: 1.2rem;
     }}
+
     .main-title h1 {{
         margin: 0;
-        color: {PALETTE['dark']};
+        color: {PALETTE['dark']} !important;
         font-size: 2.2rem;
     }}
+
     .main-title p {{
         margin: .35rem 0 0 0;
-        color: {PALETTE['muted']};
+        color: {PALETTE['muted']} !important;
         font-size: 1rem;
     }}
+
     .soft-card {{
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.92);
         border: 1px solid rgba(51, 65, 85, 0.08);
         border-radius: 22px;
         padding: 1.05rem 1.15rem;
         box-shadow: 0 10px 24px rgba(51, 65, 85, 0.06);
         margin-bottom: 1rem;
+        color: {PALETTE['dark']} !important;
     }}
+
     .metric-card {{
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.96);
         border-radius: 20px;
         border: 1px solid rgba(51, 65, 85, 0.08);
         padding: 1rem;
         box-shadow: 0 8px 20px rgba(51, 65, 85, 0.06);
         min-height: 110px;
+        color: {PALETTE['dark']} !important;
     }}
+
     .metric-label {{
         font-size: .85rem;
-        color: {PALETTE['muted']};
+        color: {PALETTE['muted']} !important;
         margin-bottom: .35rem;
     }}
+
     .metric-value {{
         font-size: 1.55rem;
         font-weight: 800;
-        color: {PALETTE['dark']};
+        color: {PALETTE['dark']} !important;
     }}
+
     .metric-note {{
         font-size: .78rem;
-        color: {PALETTE['muted']};
+        color: {PALETTE['muted']} !important;
         margin-top: .25rem;
     }}
+
     .positive-pill {{
         display:inline-block;
         background: {PALETTE['mint']};
-        color: #245B5C;
+        color: #245B5C !important;
         border-radius: 999px;
         padding: .45rem .9rem;
         font-weight: 800;
     }}
+
     .negative-pill {{
         display:inline-block;
         background: #FFE1DC;
-        color: #8C3D35;
+        color: #8C3D35 !important;
         border-radius: 999px;
         padding: .45rem .9rem;
         font-weight: 800;
     }}
+
     div[data-testid="stMetric"] {{
-        background: rgba(255,255,255,.9);
+        background: rgba(255,255,255,.96) !important;
         padding: 1rem;
         border-radius: 18px;
         border: 1px solid rgba(51, 65, 85, 0.08);
         box-shadow: 0 8px 20px rgba(51, 65, 85, 0.05);
+        color: {PALETTE['dark']} !important;
     }}
+
+    div[data-testid="stMetric"] * {{
+        color: {PALETTE['dark']} !important;
+    }}
+
     .stTabs [data-baseweb="tab-list"] {{
         gap: .45rem;
-        background: transparent;
+        background: transparent !important;
     }}
+
     .stTabs [data-baseweb="tab"] {{
         border-radius: 999px;
-        background: rgba(255,255,255,.86);
+        background: rgba(255,255,255,.92) !important;
         padding: .65rem 1.05rem;
         border: 1px solid rgba(51, 65, 85, 0.08);
     }}
+
     .stTabs [data-baseweb="tab"] p,
     .stTabs [data-baseweb="tab"] span {{
         color: {PALETTE['dark']} !important;
         font-weight: 700 !important;
         opacity: 1 !important;
     }}
+
     .stTabs [data-baseweb="tab"]:hover {{
         background: #FFFFFF !important;
     }}
+
     .stTabs [data-baseweb="tab"]:hover p,
     .stTabs [data-baseweb="tab"]:hover span {{
         color: #1F2937 !important;
     }}
+
     .stTabs [aria-selected="true"] {{
         background: {PALETTE['mint']} !important;
         border-bottom: 3px solid #FF765F !important;
     }}
+
     .stTabs [aria-selected="true"] p,
     .stTabs [aria-selected="true"] span {{
         color: {PALETTE['dark']} !important;
         font-weight: 800 !important;
     }}
-    label, .stMarkdown, .stText, p, span {{
-        color: {PALETTE['dark']};
+
+    label,
+    .stMarkdown,
+    .stText,
+    p,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {{
+        color: {PALETTE['dark']} !important;
     }}
+
     [data-testid="stMarkdownContainer"] p,
     [data-testid="stMarkdownContainer"] li,
     [data-testid="stMarkdownContainer"] h1,
@@ -165,27 +225,25 @@ st.markdown(
     [data-testid="stMarkdownContainer"] h4 {{
         color: {PALETTE['dark']} !important;
     }}
-    textarea, input {{
+
+    textarea,
+    input,
+    div[data-baseweb="input"] input,
+    div[data-baseweb="textarea"] textarea {{
         color: {PALETTE['dark']} !important;
-        background-color: rgba(255,255,255,.96) !important;
+        background-color: rgba(255,255,255,.98) !important;
     }}
-    textarea::placeholder, input::placeholder {{
+
+    textarea::placeholder,
+    input::placeholder {{
         color: #7A8A9B !important;
         opacity: 1 !important;
     }}
-    header[data-testid="stHeader"] {{
-        background: rgba(255, 248, 240, 0.96) !important;
-        border-bottom: 1px solid rgba(51, 65, 85, 0.08) !important;
-    }}
-    [data-testid="stToolbar"], [data-testid="stToolbar"] * {{
+
+    button {{
         color: {PALETTE['dark']} !important;
     }}
-    [data-testid="stDecoration"] {{
-        background: linear-gradient(90deg, {PALETTE['mint']}, {PALETTE['peach']}) !important;
-    }}
-    div[data-testid="stStatusWidget"] {{
-        color: {PALETTE['dark']} !important;
-    }}
+
     /* Altair line charts only. Bar charts use custom responsive HTML below. */
     div[data-testid="stVegaLiteChart"] {{
         background: #FFFFFF !important;
@@ -198,11 +256,14 @@ st.markdown(
         max-width: 1280px !important;
         box-sizing: border-box !important;
         overflow-x: auto !important;
+        color: {PALETTE['dark']} !important;
     }}
+
     div[data-testid="stVegaLiteChart"] > div {{
         margin: 0 auto !important;
         box-sizing: border-box !important;
     }}
+
     .html-chart-box {{
         width: calc(100% - 36px);
         max-width: 1280px;
@@ -213,13 +274,16 @@ st.markdown(
         box-shadow: 0 8px 22px rgba(54, 44, 35, 0.06);
         padding: 24px 28px 28px 28px;
         box-sizing: border-box;
+        color: {PALETTE['dark']} !important;
     }}
+
     .html-chart-title {{
-        color: {PALETTE['dark']};
+        color: {PALETTE['dark']} !important;
         font-weight: 800;
         font-size: 1.05rem;
         margin-bottom: 1.35rem;
     }}
+
     .html-chart-row {{
         display: grid;
         grid-template-columns: minmax(145px, 230px) minmax(0, 1fr) minmax(70px, 90px);
@@ -227,12 +291,14 @@ st.markdown(
         align-items: center;
         margin: 1rem 0;
     }}
+
     .html-chart-label {{
-        color: {PALETTE['dark']};
+        color: {PALETTE['dark']} !important;
         font-size: .88rem;
         line-height: 1.25;
         overflow-wrap: anywhere;
     }}
+
     .html-chart-track {{
         height: 34px;
         background: #F4F6F8;
@@ -240,55 +306,103 @@ st.markdown(
         overflow: hidden;
         border: 1px solid #E5E7EB;
     }}
+
     .html-chart-fill {{
         height: 100%;
         border-radius: 999px;
         min-width: 3px;
     }}
+
     .html-chart-value {{
-        color: {PALETTE['dark']};
+        color: {PALETTE['dark']} !important;
         font-size: .85rem;
         font-weight: 700;
         text-align: right;
         white-space: nowrap;
     }}
+
     .html-chart-axis {{
         display: grid;
         grid-template-columns: minmax(145px, 230px) minmax(0, 1fr) minmax(70px, 90px);
         gap: 14px;
         align-items: center;
         margin-top: .8rem;
-        color: {PALETTE['muted']};
+        color: {PALETTE['muted']} !important;
         font-size: .78rem;
     }}
+
     .html-chart-axis-line {{
         display: flex;
         justify-content: space-between;
         border-top: 1px solid #E5E7EB;
         padding-top: .45rem;
     }}
+
+    /* Force normal Streamlit tables to light theme */
+    div[data-testid="stTable"],
+    div[data-testid="stDataFrame"] {{
+        background: #FFFFFF !important;
+        color: {PALETTE['dark']} !important;
+        border-radius: 16px !important;
+    }}
+
+    div[data-testid="stTable"] table {{
+        background: #FFFFFF !important;
+        color: {PALETTE['dark']} !important;
+        border-collapse: collapse !important;
+    }}
+
+    div[data-testid="stTable"] thead tr th {{
+        background: #EAF7F7 !important;
+        color: {PALETTE['dark']} !important;
+        font-weight: 800 !important;
+        border-bottom: 1px solid #D9E6E6 !important;
+    }}
+
+    div[data-testid="stTable"] tbody tr td {{
+        background: #FFFFFF !important;
+        color: {PALETTE['dark']} !important;
+        border-bottom: 1px solid #EFE7DD !important;
+    }}
+
+    div[data-testid="stTable"] tbody tr:nth-child(even) td {{
+        background: #FFF8F0 !important;
+    }}
+
+    .stDataFrame,
+    .stDataFrame *,
+    div[data-testid="stDataFrame"] *,
+    div[data-testid="stTable"] * {{
+        color: {PALETTE['dark']} !important;
+    }}
+
     @media (max-width: 780px) {{
+        .main-title h1 {{
+            font-size: 1.65rem;
+        }}
+
         .html-chart-box {{
             width: calc(100% - 8px);
             padding: 18px 16px 20px 16px;
         }}
+
         .html-chart-row {{
             grid-template-columns: 1fr;
             gap: 8px;
             margin: 1.1rem 0;
         }}
+
         .html-chart-value {{
             text-align: left;
         }}
+
         .html-chart-axis {{
             display: none;
         }}
     }}
+
     footer {{
         visibility: hidden;
-    }}
-    .stDataFrame, .stDataFrame * {{
-        color: {PALETTE['dark']} !important;
     }}
     </style>
     """,
